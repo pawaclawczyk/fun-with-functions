@@ -2,6 +2,8 @@
 
 namespace FunWithFunctions\Tests;
 
+use function FunWithFunctions\tail;
+
 class TailTest extends \PHPUnit_Framework_TestCase
 {
     /** @test */

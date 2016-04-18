@@ -9,21 +9,16 @@ function compose($f, $g)
     };
 }
 
-function composeN(...$fs)
+function composeN(...$functions)
 {
-    if (1 === count($fs)) {
-        return compose(head($fs), id);
-    } elseif (2 === count($fs)) {
-        return compose(head($fs), head(tail($fs)));
+    $first = head;
+    $second = compose(head, tail);
+    $rest = compose(tail, tail);
+    $composeLeftmostTwo = compose($first($functions), $second($functions));
+
+    if (count($functions) > 2) {
+        return composeN($composeLeftmostTwo, ...$rest($functions));
     } else {
-        return composeN(
-            compose(
-                head($fs),
-                head(tail($fs))
-            ),
-            ...tail(
-                tail($fs)
-            )
-        );
+        return $composeLeftmostTwo;
     }
 };

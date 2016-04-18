@@ -1,0 +1,26 @@
+{
+    "name": "pwc/fun-with-functions",
+    "description": "Some functional programming concepts implemented in PHP.",
+    "type": "demo",
+    "require-dev": {
+        "phpunit/phpunit": "^5.3",
+        "fabpot/php-cs-fixer": "^1.11"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Pawel Waclawczyk",
+            "email": "p.a.waclawczyk@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "FunWithFunctions\\": "src/FunWithFunctions"
+        },
+        "files": [
+            "src/FunWithFunctions/Curry.php"
+        ]
+    },
+    "require": {}
+}

@@ -4,11 +4,9 @@ namespace FunWithFunctions;
 
 function curry($f)
 {
-    return function (...$args) use ($f) {
-        return function ($x) use ($f, $args) {
-            $args[] = $x;
-
-            return $f(...$args);
+    return function (...$leftArgs) use ($f) {
+        return function (...$rightArgs) use ($f, $leftArgs) {
+            return $f(...array_merge($leftArgs, $rightArgs));
         };
     };
 }

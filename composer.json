@@ -2,10 +2,6 @@
     "name": "pwc/fun-with-functions",
     "description": "Some functional programming concepts implemented in PHP.",
     "type": "demo",
-    "require-dev": {
-        "phpunit/phpunit": "^5.3",
-        "fabpot/php-cs-fixer": "^1.11"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -22,5 +18,18 @@
             "src/FunWithFunctions/Curry.php"
         ]
     },
-    "require": {}
+    "autoload-dev": {
+        "psr-4": {
+            "FunWithFunctions\\Tests\\": "tests/FunWithFunctions"
+        }
+    },
+    "scripts": {
+        "cs-fixer": "vendor/bin/php-cs-fixer --config-file=config/.php_cs fix",
+        "tests-unit": "vendor/bin/phpunit tests/"
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.3",
+        "fabpot/php-cs-fixer": "^1.11"
+    }
 }

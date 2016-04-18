@@ -36,24 +36,21 @@ MOUNT_COMPOSER = -v $(HOME)/.composer:$(CONTAINER_HOME)/.composer
 RUN = docker run --rm -ti $(MOUNT_COMPOSER) $(MOUNT_APP) -w $(WORKDIR) $(IMAGE)
 
 php-version:    build
-	$(RUN) php --version
+	@$(RUN) php --version
 
-run:    build
-	$(RUN) \
+run: build composer-install
+	@$(RUN) \
 	  bash -c '$(CREATE_USER) php app/app.php'
 
 composer:   build
-	$(RUN) \
+	@$(RUN) \
 	  bash -c '$(CREATE_USER) composer $(COMPOSER_ARGS)'
 
-cs-fixer:   build
-	$(RUN) \
-	  bash -c '$(CREATE_USER) vendor/bin/php-cs-fixer fix src'
-	$(RUN) \
-      bash -c '$(CREATE_USER) vendor/bin/php-cs-fixer fix app'
+composer-install:
+	composer install
 
 ls:   build
-	$(RUN) \
+	@$(RUN) \
 	  bash -c '$(CREATE_USER) ls -l'
 
 build:

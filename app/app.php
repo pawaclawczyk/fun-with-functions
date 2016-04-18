@@ -30,6 +30,8 @@ $curriedAddThreeArguments = curry(curry($addThreeArguments));
 
 echo $curriedAddThreeArguments(2)(3)(4);
 
+echo "\n";
+
 // Callable -> [A] -> [B]
 $map = curry(array_map);
 

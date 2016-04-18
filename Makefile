@@ -39,7 +39,8 @@ php-version:    build
 	$(RUN) php --version
 
 run:    build
-	$(RUN) php app/app.php
+	$(RUN) \
+	  bash -c '$(CREATE_USER) php app/app.php'
 
 composer:   build
 	$(RUN) \

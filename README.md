@@ -6,4 +6,4 @@ Demonstrate implementation of basic blocks and concepts of functional programmin
 
 ## Lazy thoughts
 
-* [Object oriented service and function correlation](../docs/LazyThoughts/object_oriented_service_and_function_correlation.md)
+* [Object oriented service and function correlation](docs/LazyThoughts/object_oriented_service_and_function_correlation.md)

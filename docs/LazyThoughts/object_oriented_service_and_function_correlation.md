@@ -152,18 +152,31 @@ $polishInvoiceCreator(Product::named('Teapot'), Money::PLN(100));
 ## Final thoughts...
 
 If ...
+
 ... service has single business method (and the constructor with dependencies),
+
 Then ...
+
 ... can be represented as a function,
+
 So ...
+
 ... can be curried,
+
 So ...
+
 ... can be partially applied,
+
 So ...
+
 ... can be reduced to single variable function,
+
 So ...
+
 ... can be composed.
+
 Well ...
+
 ... probably it is possible to use declarative style of programming using objects - need to check how it could works.
 
 Object with constructor and business method <=> curried function:

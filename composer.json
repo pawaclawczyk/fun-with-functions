@@ -11,7 +11,13 @@
     ],
     "minimum-stability": "stable",
     "autoload": {
+        "psr-4": {
+            "FunWithFunctions\\": "src/FunWithFunctions"
+        },
         "files": [
+            "src/FunWithFunctions/Functions/Map.php",
+            "src/FunWithFunctions/Functions/Math.php",
+            "src/FunWithFunctions/Functions/Maybe.php",
             "src/FunWithFunctions/Curry.php",
             "src/FunWithFunctions/Compose.php",
             "src/FunWithFunctions/Head.php",
@@ -31,6 +37,7 @@
     "require": {},
     "require-dev": {
         "phpunit/phpunit": "^5.3",
-        "fabpot/php-cs-fixer": "^1.11"
+        "fabpot/php-cs-fixer": "^1.11",
+        "symfony/var-dumper": "^3.0"
     }
 }

@@ -2,7 +2,7 @@
 
 declare (strict_types = 1);
 
-namespace FunWithFunctions\Types;
+namespace FunWithFunctions\Types\Maybe;
 
 interface Maybe
 {

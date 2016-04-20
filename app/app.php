@@ -10,6 +10,10 @@ use function FunWithFunctions\Functions\add;
 use function FunWithFunctions\Functions\square;
 use function FunWithFunctions\Functions\sub;
 use function FunWithFunctions\Functions\neg;
+use function FunWithFunctions\Types\Either\Left;
+use function FunWithFunctions\Types\Either\Right;
+use function FunWithFunctions\Types\Safe\Success;
+use function FunWithFunctions\Types\Safe\Failure;
 
 $loader = require __DIR__.'/../vendor/autoload.php';
 
@@ -67,7 +71,7 @@ printLn('composeN(add(4), neg, sub(2), sqrt)(5)');
 
 dump($composition(5));
 
-printTitle('Maybe');
+printTitle('Maybe[Some, None]');
 
 $withdraw = curry(function ($amount, $balance) { return $amount > $balance ? None() : Some($balance - $amount); });
 $returnPercent = curry(function ($percent, $amount, $balance) { return $balance + ($percent / 100) * $amount; });
@@ -77,3 +81,42 @@ $getTwenty = compose(map($returnPercent(5, 20)), $withdraw(20));
 dump($getTwenty(100));
 
 dump($getTwenty(10));
+
+printTitle('Either[Left, Right]');
+
+printLn("Left('Water')->left()->map(strlen)");
+dump(Left('Water')->left()->map(strlen));
+
+printLn('Right(42)->left()->map(square)');
+dump(Right(42)->left()->map(square));
+
+printLn("Left('Water')->right()->map(strlen)");
+dump(Left('Water')->right()->map(strlen));
+
+printLn('Right(42)->right()->map(square)');
+dump(Right(42)->left()->map(square));
+
+printTitle('Safe[Success, Failure]');
+
+$onlyPositive = function ($x) {
+    if (0 <= $x) {
+        return $x;
+    } else {
+        throw new \Exception('Number has to be positive!.');
+    }
+};
+
+printLn('Success(5)->map(square)');
+dump(Success(5)->map(square));
+
+printLn("Failure('ERROR !!!')->map(square)");
+dump(Failure('ERROR !!!')->map(square));
+
+printLn('$onlyPositive(x) throw exception if x < 0');
+printLn('map(compose(square, $onlyPositive))(Success(5))');
+
+dump(map(compose(square, $onlyPositive))(Success(5)));
+
+printLn('map(compose(square, $onlyPositive))(Success(-5))');
+
+dump(map(compose(square, $onlyPositive))(Success(-5)));

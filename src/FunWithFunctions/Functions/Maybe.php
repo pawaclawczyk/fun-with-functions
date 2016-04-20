@@ -4,8 +4,8 @@ declare (strict_types = 1);
 
 namespace FunWithFunctions\Functions;
 
-use FunWithFunctions\Types\None;
-use FunWithFunctions\Types\Some;
+use FunWithFunctions\Types\Maybe\None;
+use FunWithFunctions\Types\Maybe\Some;
 
 function Some($x) : Some
 {
